@@ -3,7 +3,7 @@ module.exports = [
     { text: '个人主页', link: '/about/about.html' },
     {
         text: '技术',
-        link: '/technology/',
+        link: '/technology/technology.html',
         items: [
             {text: '博客搭建',link: '/technology/process'}
         ],
