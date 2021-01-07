@@ -32,7 +32,7 @@ export default {
       required: true
     }
   },
-
+  
   computed: {
     link () {
       return ensureExt(this.item.link)
