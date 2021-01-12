@@ -6,6 +6,7 @@
     <Content class="theme-default-content" />
     
     
+    
     <PageEdit />
     
     <PageNav v-bind="{ sidebarItems }" />
@@ -20,15 +21,18 @@ import PageNav from '@theme/components/PageNav.vue'
 
 export default {
   components: { PageEdit, PageNav },
-  props: ['sidebarItems']
+  props: ['sidebarItems'],
+  
 }
+
 </script>
 
 <style lang="stylus">
 @require '../styles/wrapper.styl'
 
 .page
+  
   padding-bottom 2rem
-  display block
+  display block 
 
 </style>

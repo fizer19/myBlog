@@ -6,6 +6,7 @@
   "author": "fizer",
   "license": "MIT",
   "devDependencies": {
+    "@vuepress/plugin-back-to-top": "^1.8.0",
     "vuepress": "^1.7.1"
   },
   "scripts": {
@@ -14,6 +15,8 @@
     "deploy": "bash deploy.sh"
   },
   "dependencies": {
+    "@vssue/api-github-v4": "^1.4.7",
+    "@vssue/vuepress-plugin-vssue": "^1.4.7",
     "moment": "^2.29.1"
   }
 }

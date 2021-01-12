@@ -1,24 +1,26 @@
 const nav = require('./config/nav.js')
+const vssue = require('./config/vssue.js')
 const moment = require('moment');
+moment.locale("zh-cn");
 module.exports = {
+  base: "/myBlog/",
   title: "fizer",
   // base: "/myBlog/",
-  plugins: [
-    [
-      '@vuepress/last-updated',
-      {
-        transformer: (timestamp, lang) => {
-         
-          moment.locale(lang)
-          return moment(timestamp).format('YYYY-MM-DD')
-        }
+  plugins: {
+    '@vuepress/last-updated': {
+      transformer: (timestamp) => {
+        
+        return moment(timestamp).format('YYYY-MM-DD')
       }
-    ]
-  ],
+    },
+    '@vuepress/back-to-top': true,
+    '@vssue/vuepress-plugin-vssue': vssue,
+  },
+  
   themeConfig: {
-    logo: '/assets/img/pear.jpg',
+    logo: '/assets/img/avatar.png',
     sidebarDepth: 2,
-    lastUpdated: '最后更新时间',
+    lastUpdated: '更新时间',
     // blogConfig: {
     //   category: {
     //     location: 2,
@@ -32,6 +34,7 @@ module.exports = {
     // },
     nav,
     sidebar: "auto",
+    // iconPrefix: ''
 
   }
 }

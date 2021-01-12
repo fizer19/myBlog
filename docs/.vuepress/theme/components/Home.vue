@@ -1,163 +1,62 @@
 <template>
-  <main
-    class="home"
-    :aria-labelledby="data.heroText !== null ? 'main-title' : null"
-  >
-    <div class="home_bg">
-      <img src="" alt="" />
-    </div>
-    <header class="hero">
-      <img
-        v-if="data.heroImage"
-        :src="$withBase(data.heroImage)"
-        :alt="data.heroAlt || 'hero'"
-      />
-
-      <!-- <h1 v-if="data.heroText !== null" id="main-title">
-        {{ data.heroText || $title || "Hello" }}
-      </h1> -->
-
-      <p v-if="data.tagline !== null" class="description">
-        {{ data.tagline || $description  }}
-      </p>
-
-      <p v-if="data.actionText && data.actionLink" class="action">
-        <NavLink class="action-button" :item="actionLink" />
-      </p>
-    </header>
-
-    <div v-if="data.features && data.features.length" class="features">
-      <div
-        v-for="(feature, index) in data.features"
-        :key="index"
-        class="feature"
-      >
-        <h2>{{ feature.title }}</h2>
-        <p>{{ feature.details }}</p>
+  <div class="container">
+    <!-- meta标签用来反 -->
+    <meta name="referrer" content="no-referrer" />
+    <main class="home">
+      <div class="img_auto">
+        <div class="img_item" v-for="(item, index) in urls" :key="index">
+          <img :src="item" alt="图" />
+        </div>
       </div>
-    </div>
-
-    <Content class="theme-default-content custom" />
-
-    <div v-if="data.footer" class="footer">
-      {{ data.footer }}
-    </div>
-  </main>
+    </main>
+  </div>
 </template>
 
 <script>
-import NavLink from "@theme/components/NavLink.vue";
-
 export default {
   name: "Home",
-
-  components: { NavLink },
-
-  computed: {
-    data() {
-      return this.$page.frontmatter;
-    },
-
-    actionLink() {
-      return {
-        link: this.data.actionLink,
-        text: this.data.actionText,
-      };
-    },
+  data() {
+    return {
+      // urls: [
+      //   "https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fpic1.win4000.com%2Fwallpaper%2F6%2F54aca45d1d24f.jpg&refer=http%3A%2F%2Fpic1.win4000.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1613030206&t=825479c2e49308aea6fbf5f47259210f",
+      //   "https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fdik.img.kttpdq.com%2Fpic%2F26%2F18138%2Fc88efa174d27c179.jpg&refer=http%3A%2F%2Fdik.img.kttpdq.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1613030323&t=83d33fe9c1f97777a9c0f7c46b86c7f0",
+      //   "https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fpic1.win4000.com%2Fwallpaper%2F2%2F587c33547c077.jpg&refer=http%3A%2F%2Fpic1.win4000.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1613030410&t=69a969fd6139eb4464c6c67e752de029",
+      // ],
+      urls: [
+        "/myBlog/assets/img/item1.jpg",
+        "/myBlog/assets/img/item2.jpg",
+        "/myBlog/assets/img/item3.jpg",
+      ],
+    };
   },
 };
 </script>
 
 <style lang="stylus">
-.home {
-  
-  
-  margin: 0px auto;
-  display: block;
+.container {
+  margin-top: 3.6rem;
+  padding: 0.625rem;
 
-  .home_bg {
-    img {
-      width: 100%;
-      height 100%
-    }
-  }
+  .home {
+    // max-width: 56.875rem;
+    
+    margin: 1.25rem auto;
 
-  .hero {
-    text-align: center;
-
-    img {
-      max-width: 100%;
-      max-height: 280px;
-      display: block;
-      margin: 3rem auto 1.5rem;
-    }
-
-    h1 {
-      font-size: 3rem;
-    }
-
-    h1, .description, .action {
-      margin: 1.8rem auto;
-    }
-
-    .description {
-      max-width: 35rem;
-      font-size: 1.6rem;
-      line-height: 1.3;
-      color: lighten($textColor, 40%);
-    }
-
-    .action-button {
-      display: inline-block;
-      font-size: 1.2rem;
-      color: #fff;
-      background-color: $accentColor;
-      padding: 0.8rem 1.6rem;
-      border-radius: 4px;
-      transition: background-color 0.1s ease;
-      box-sizing: border-box;
-      border-bottom: 1px solid darken($accentColor, 10%);
-
-      &:hover {
-        background-color: lighten($accentColor, 10%);
+    .img_auto {
+      display: flex;
+      
+      overflow hidden;
+      .img_item {
+        
+        width: 56.875rem;
+        
+        
+        img {
+          width: 100%;
+          
+        }
       }
     }
-  }
-
-  .features {
-    border-top: 1px solid $borderColor;
-    padding: 1.2rem 0;
-    margin-top: 2.5rem;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: flex-start;
-    align-content: stretch;
-    justify-content: space-between;
-  }
-
-  .feature {
-    flex-grow: 1;
-    flex-basis: 30%;
-    max-width: 30%;
-
-    h2 {
-      font-size: 1.4rem;
-      font-weight: 500;
-      border-bottom: none;
-      padding-bottom: 0;
-      color: lighten($textColor, 10%);
-    }
-
-    p {
-      color: lighten($textColor, 25%);
-    }
-  }
-
-  .footer {
-    padding: 2.5rem;
-    border-top: 1px solid $borderColor;
-    text-align: center;
-    color: lighten($textColor, 25%);
   }
 }
 
