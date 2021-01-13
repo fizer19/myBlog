@@ -30,7 +30,7 @@ export default {
     },
   },
   mounted() {
-    console.log("hhhh", this.articleList);
+    // console.log("hhhh", this.articleList);
   },
   computed: {
     articleList() {

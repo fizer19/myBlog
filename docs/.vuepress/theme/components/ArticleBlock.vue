@@ -6,9 +6,7 @@
     <div class="article_info">
       <div class="article_title">{{ info.frontmatter.title }}</div>
       <div class="article_description">
-        <div class="description">
-          {{ info.frontmatter.description }}
-        </div>
+        {{ info.frontmatter.description }}
       </div>
       <div class="article_tags">
         <div class="author">
@@ -31,11 +29,11 @@ export default {
   },
   data() {
     return {
-      defaultImg: "/myBlog/assets/img/pear.jpg",
+      defaultImg: "/myBlog/assets/img/article1.png",
     };
   },
   mounted() {
-    console.log(this.info);
+    // console.log(this.info);
   },
 };
 </script>
@@ -54,11 +52,13 @@ export default {
   padding: 1.5rem 0;
 
   .article_img {
-    flex: 1;
+    // flex: 1;
+    width: 8.75rem;
     height: 8.75rem;
 
     img {
       width: 100%;
+      height: 8.75rem;
     }
   }
 
@@ -83,13 +83,7 @@ export default {
       -webkit-box-orient: vertical;
       -webkit-line-clamp: 3;
       overflow: hidden;
-
-      .description {
-        text-indent: 1.5rem;
-      }
-
-      .more {
-      }
+      text-indent: 1.5rem;
     }
 
     .article_tags {
