@@ -51,7 +51,7 @@ export default {
     },
   },
   mounted() {
-    // console.log("hhhh", this.articleList);
+    console.log("hhhh", this.articleList);
   },
   watch: {
     //监测页数移动分页数字的位置
