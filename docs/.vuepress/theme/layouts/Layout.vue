@@ -41,6 +41,7 @@
         <Vssue class="theme-default-content content__default"  :options="{ locale: 'zh' }" />
       </template>
     </Page>
+    
   </div>
 </template>
  

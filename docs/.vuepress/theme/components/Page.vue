@@ -22,6 +22,9 @@ import PageNav from '@theme/components/PageNav.vue'
 export default {
   components: { PageEdit, PageNav },
   props: ['sidebarItems'],
+  mounted() {
+    console.log('items',this.sidebarItems);
+  }
   
 }
 

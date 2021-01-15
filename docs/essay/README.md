@@ -1,6 +1,6 @@
 ---
 title: 随笔
-type: essay
+type: 随笔
 layout: articleList
 ---
 

@@ -75,6 +75,9 @@ export default {
     next () {
       return resolvePageLink(LINK_TYPES.NEXT, this)
     }
+  },
+  mounted() {
+    console.log('pre',this.prev,this.next);
   }
 }
 

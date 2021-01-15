@@ -23,46 +23,116 @@
       </div>
       <div class="content">
         <div class="article_wrap">
-          <div class="recomend">
+          <div  class="recomend">
             <div class="picture">
-              <img src="/myBlog/assets/img/article1.png" alt="" />
+              <img :src="articles.recommend.frontmatter.url" alt="" />
             </div>
-            <div class="article_info">
-              <div class="title">文章标题</div>
-              <div class="descript">文章描述</div>
+            <router-link :to="articles.recommend.path" class="article_info">
+              <div class="title">{{articles.recommend.frontmatter.title}}</div>
+              <div class="descript">{{articles.recommend.frontmatter.description}}</div>
               <div class="tags">
                 <div class="author">
                   <div class="iconfont iconbussiness-man"></div>
-                  <div class="name">梨先生</div>
+                  <div class="name">{{articles.recommend.frontmatter.author}}</div>
                 </div>
                 <div class="update_time">
                   <div class="iconfont iconclock"></div>
-                  <div class="time">2021-1-13</div>
+                  <div class="time">{{articles.recommend.frontmatter.time}}</div>
                 </div>
               </div>
-            </div>
+            </router-link>
           </div>
           <div class="article_list">
-            <div class="article_item">
+            <div class="article_item" v-for="(item,index) in articles.list" :key="index">
               <ArticleBlock :info="item" />
             </div>
-            <div class="article_item">
-              <ArticleBlock :info="item" />
-            </div>
+            
           </div>
         </div>
-        <div class="aside_info"></div>
+        <div class="aside_info">
+          <div class="about_me">
+            <div class="title">关于我</div>
+            <img src="/myBlog/assets/img/avatar.png" alt="" />
+            <div class="info">
+              <div class="info_type">个人资料</div>
+              <div class="description">95后，双鱼座，兴趣广泛，童心未泯</div>
+              <div class="email">邮箱：fizer19@gmail.com</div>
+            </div>
+          </div>
+          <div class="links">
+            <div class="link_text">友情连接</div>
+            <a href="https://www.vuepress.cn/">vuepress</a>
+          </div>
+        </div>
       </div>
+
+      <header class="hero">
+      <!-- <img
+        v-if="data.heroImage"
+        :src="$withBase(data.heroImage)"
+        :alt="data.heroAlt || 'hero'"
+      > -->
+
+      <h1
+        v-if="data.heroText !== null"
+        id="main-title"
+      >
+        {{ data.heroText || $title || 'Hello' }}
+      </h1>
+
+      <p
+        v-if="data.tagline !== null"
+        class="description"
+      >
+        {{ data.tagline || $description || 'Welcome to your VuePress site' }}
+      </p>
+
+      <p
+        v-if="data.actionText && data.actionLink"
+        class="action"
+      >
+        <NavLink
+          class="action-button"
+          :item="actionLink"
+        />
+      </p>
+    </header>
+
+    <div
+      v-if="data.features && data.features.length"
+      class="features"
+    >
+      <div
+        v-for="(feature, index) in data.features"
+        :key="index"
+        class="feature"
+      >
+        <h2>{{ feature.title }}</h2>
+        <p>{{ feature.details }}</p>
+      </div>
+    </div>
+
+    <Content class="theme-default-content custom" />
+
+    <div
+      v-if="data.footer"
+      class="footer"
+    >
+      {{ data.footer }}
+    </div>
     </main>
+    <div class="copyright">Copyright | 2021- by fizer</div>
   </div>
 </template>
 
 <script>
 import ArticleBlock from "@theme/components/ArticleBlock.vue";
+import NavLink from '@theme/components/NavLink.vue'
 export default {
   name: "Home",
   components: {
-    ArticleBlock
+    ArticleBlock,
+    NavLink
   },
   data() {
     return {
@@ -72,18 +142,22 @@ export default {
         "/myBlog/assets/img/item3.jpg",
       ],
       active: 0,
-      inteval: "",
-      item: ""
+      intevalId: "",
+      
+      
+      
+      
     };
   },
   mounted() {
-    console.log('list',this.$site.pages);
-    this.item = this.$site.pages[14]
+    console.log("list", this.$site.pages);
+    
+    this.item = this.$site.pages[14];
     //定时器切换轮播图
-    if (this.inteval) {
-      clearInterval(this.inteval);
+    if (this.intevalId) {
+      clearInterval(this.intevalId);
     }
-    this.inteval = setInterval((item) => {
+    this.intevalId = setInterval((item) => {
       if (this.active == this.urls.length - 1) {
         this.active = 0;
       } else {
@@ -91,12 +165,48 @@ export default {
       }
     }, 6000);
   },
+  computed: {
+    
+    articles() {
+      const { pages } = this.$site;
+      let obj = {
+        //推荐文章
+        recommend: {},
+        // 首页文章列表，通过md文件中添加atHome: true显示
+        list: []
+      };
+      
+      pages.forEach((item) => {
+        if ( item.frontmatter.atHome) {
+          obj.list.push(item);
+          console.log('item',item);
+        }
+        if(item.frontmatter.recommend) {
+          obj.recommend = item;
+          console.log('recommend',item);
+        }
+      });
+
+      return obj;
+    },
+    data () {
+      return this.$page.frontmatter
+    },
+
+    actionLink () {
+      return {
+        link: this.data.actionLink,
+        text: this.data.actionText
+      }
+    }
+  }
   
 };
 </script>
 
-<style lang="stylus">
+<style lang="stylus" >
 .container {
+  position: relative;
   margin-top: 3.6rem;
   padding: 0.625rem;
   height: 2000px;
@@ -166,6 +276,7 @@ export default {
         .recomend {
           box-shadow: 0 3px 10px #eee;
           padding: 1.25rem;
+
           .picture {
             img {
               width: 100%;
@@ -222,7 +333,7 @@ export default {
 
         .article_list {
           margin-top: 1.25rem;
-          padding: .625rem;
+          padding: 0.625rem;
           box-shadow: 0 3px 10px #eee;
         }
       }
@@ -230,11 +341,60 @@ export default {
       .aside_info {
         flex: 1;
         margin-left: 1.3rem;
-        height: 300px;
-        background-color: blue;
+        box-shadow: 0 3px 10px #eee;
+        padding: 1.25rem;
+
+        .about_me {
+          .title {
+            font-weight: 700;
+            color: #474645;
+            font-size: 1rem;
+          }
+
+          img {
+            width: 12.5rem;
+            height: 12.5rem;
+            margin: 1.25rem 0;
+          }
+
+          .info {
+            font-size: 0.75rem;
+            margin-bottom: 0.533333rem;
+
+            .info_type {
+              // margin-bottom: 0.625rem;
+            }
+
+            .description {
+              color: #778cbd;
+              margin: .625rem 0;
+            }
+            .email {
+              
+            }
+          }
+        }
+
+        .links {
+          margin-top: 0.625rem;
+
+          .link_text {
+            margin: .625rem 0;
+            font-size: 700;
+          }
+        }
       }
     }
   }
+}
+.copyright {
+    position: absolute;
+    height: 3.125rem;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    line-height: 3.125rem;
+    color: #666;
 }
 
 @media (max-width: $MQMobile) {

@@ -53,12 +53,12 @@ export default {
 
   .article_img {
     // flex: 1;
-    width: 8.75rem;
-    height: 8.75rem;
+    width: 7.75rem;
+    height: 7.75rem;
 
     img {
       width: 100%;
-      height: 8.75rem;
+      height: 7.75rem;
     }
   }
 

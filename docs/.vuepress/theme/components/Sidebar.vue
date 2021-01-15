@@ -1,23 +1,23 @@
 <template>
   <aside class="sidebar">
     <div class="sidebar_list">
-      <div class="sidebar_title">相关文章</div>
+      <div class="sidebar_title">{{title}}</div>
       <div class="page_list" v-for="(item, index) in articleList">
         <router-link :to="item.path" class="article_item">{{
           item.title
         }}</router-link>
       </div>
     </div>
-    <!-- <NavLinks />
+    <NavLinks />
 
     <slot name="top" />
 
-    <SidebarLinks
+    <!-- <SidebarLinks
       :depth="0"
       :items="items"
-    />
+    /> -->
     
-    <slot name="bottom" /> -->
+    <slot name="bottom" />
   </aside>
 </template>
 
@@ -27,18 +27,24 @@ import NavLinks from "@theme/components/NavLinks.vue";
 
 export default {
   name: "Sidebar",
-
+  
   components: { SidebarLinks, NavLinks },
 
   props: ["items"],
-  methods: {
-    toggleSidebar(to) {
-      this.isSidebarOpen = typeof to === "boolean" ? to : !this.isSidebarOpen;
-      this.$emit("toggle-sidebar", this.isSidebarOpen);
-    },
+  data() {
+    return {
+      title: ''
+    }
   },
+  // methods: {
+  //   toggleSidebar(to) {
+  //     this.isSidebarOpen = typeof to === "boolean" ? to : !this.isSidebarOpen;
+  //     this.$emit("toggle-sidebar", this.isSidebarOpen);
+  //   },
+  // },
   mounted() {
-    // console.log("hhhh", this.articleList);
+    this.title = this.$frontmatter.categories;
+    
   },
   computed: {
     articleList() {

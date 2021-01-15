@@ -1,7 +1,7 @@
 ---
 title: 前端
 
-type: fontend
+type: 前端
 layout: articleList
 ---
 

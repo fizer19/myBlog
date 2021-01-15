@@ -1,6 +1,6 @@
 ---
 title: 教程
-type: tutorial
+type: 教程
 layout: articleList
 ---
 

@@ -15,25 +15,16 @@ module.exports = {
     },
     '@vuepress/back-to-top': true,
     '@vssue/vuepress-plugin-vssue': vssue,
+    '@vuepress/blog': true,
   },
   
   themeConfig: {
     logo: '/assets/img/avatar.png',
     sidebarDepth: 2,
     lastUpdated: '更新时间',
-    // blogConfig: {
-    //   category: {
-    //     location: 2,
-    //     text: "Category"
-    //   },
-    //   tag: {
-    //     location: 3,
-    //     text: "Tag"
-    //   }
-      
-    // },
+    
     nav,
-    sidebar: "auto",
+    sidebar: 'auto',
     // iconPrefix: ''
 
   }
