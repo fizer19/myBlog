@@ -1,12 +1,13 @@
 ---
-title: 第一篇随笔文章
+title: 第三篇篇随笔文章
 description: 这是我的第一篇随笔文章，试试看,博客搭建好之后开始深究知识点了，知其然知其所以然，天将降大任于斯人也，必先苦其心志，劳其体肤
 categories: 随笔
 url: /myBlog/assets/img/avatar.png
-atHome: true
-author: 梨先生
 
-time: "2021-01-12"
+
+author: 梨先生
+order: 1
+time: "2021-01-15"
 ---
 
 ## 随笔，你来啦，嘿嘿

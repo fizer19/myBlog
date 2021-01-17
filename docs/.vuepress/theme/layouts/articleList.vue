@@ -9,7 +9,7 @@
         </div>
       </div>
       <div class="paging" v-if="pagesNum.length > 1">
-        <div class="prev item">上一页</div>
+        <div class="prev item" @click="onPageChange(-1)">上一页</div>
         <div class="page_number">
           <div class="number_wrap" ref="number_wrap">
             <div
@@ -24,7 +24,7 @@
           </div>
         </div>
 
-        <div class="next item">下一页</div>
+        <div class="next item"  @click="onPageChange(1)">下一页</div>
       </div>
     </main>
   </div>
@@ -40,7 +40,7 @@ export default {
   },
   data() {
     return {
-      list: new Array(this.articleList),
+      
       active: 0,
     };
   },
@@ -49,6 +49,17 @@ export default {
       this.isSidebarOpen = typeof to === "boolean" ? to : !this.isSidebarOpen;
       this.$emit("toggle-sidebar", this.isSidebarOpen);
     },
+    //上一页下一页时间
+    onPageChange(index) {
+      console.log('dianjile',this.pagesNum.length);
+        let newIndex = this.active + index;
+        if(newIndex  < 0 || newIndex == this.pagesNum.length  ) {
+          return
+        }
+        this.active = newIndex;
+      
+    }
+    
   },
   mounted() {
     console.log("hhhh", this.articleList);
@@ -67,14 +78,17 @@ export default {
     }
   },
   computed: {
+    //页数数组，仅用来表示有多少页
     pagesNum() {
       let pagesNum = Math.ceil(this.articleList.length / 10);
       return new Array(pagesNum).fill(0);
     },
+    //当前页的文章数组
     pageArticles() {
       let start = this.active * 10;
       return this.articleList.slice(start,start + 10).sort();
     },
+    //总的文章列表
     articleList() {
       const { pages } = this.$site;
       const { type } = this.$frontmatter;
@@ -84,6 +98,15 @@ export default {
           list.push(item);
         }
       });
+      //根据time属性排序
+      list.sort(function(a,b) {
+        if(a.frontmatter.time > b.frontmatter.time) {
+          return -1
+        }else {
+          return 1
+        }
+        
+      })
       
       return list
     },
@@ -111,9 +134,10 @@ export default {
 
   .article_wrap {
     width: 43.75rem;
-    margin: 4rem 0;
-    padding-left: 20rem;
-    min-height: 56.25rem;
+    margin: 1rem 0;
+    margin-left: 16rem;
+    padding: 1.25rem;
+    // min-height: 56.25rem;
     // background-color: #fffbf0;
     background-color: #fff;
   }
@@ -135,6 +159,10 @@ export default {
     background-color: #eee;
     // padding: .325rem 1rem;
     border-radius: 0.3rem;
+  }
+  .item:hover {
+    color: #28b0d1;
+    cursor: pointer;
   }
 
   .prev {

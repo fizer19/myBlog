@@ -1,52 +1,96 @@
 <template>
   <div class="container">
     <main class="home">
-      <!-- 轮播图 -->
-      <div class="img_auto">
-        <div
-          class="img_item"
-          :style="{ opacity: index == active ? 1 : 0 }"
-          v-for="(item, index) in urls"
-          :key="index"
-        >
-          <img :src="item" alt="图" />
-        </div>
-        <!-- 圆点 -->
-        <div class="bullet_wrap">
+      <div class="head">
+        <!-- 轮播图 -->
+        <div class="img_auto">
           <div
-            :class="index == active ? 'bullet active' : 'bullet'"
+            class="img_item"
+            :style="{ opacity: index == active ? 1 : 0 }"
             v-for="(item, index) in urls"
             :key="index"
-            @click="active = index"
-          ></div>
+          >
+            <img :src="item" alt="图" />
+          </div>
+          <!-- 圆点 -->
+          <div class="bullet_wrap">
+            <div
+              :class="index == active ? 'bullet active' : 'bullet'"
+              v-for="(item, index) in urls"
+              :key="index"
+              @click="active = index"
+            ></div>
+          </div>
+        </div>
+        <div class="head_right">
+          <div class="blackboard">
+            <img src="/myBlog/assets/img/blackboard.png" alt="" />
+          </div>
+          <div class="follow">
+            <div class="text">关注我</div>
+            <div class="accounts">
+              <a
+                href="https://weibo.com/3290035597/profile?topnav=1&wvr=6&is_all=1#1610887982317"
+                target="_blank"
+              >
+                <img src="/myBlog/assets/icons/weibo.png" alt="" />
+                <div class="name">新浪微博</div>
+              </a>
+              <a
+                href="https://github.com/fizer19"
+                target="_blank"
+              >
+                <img src="/myBlog/assets/icons/github.png" alt="" />
+                <div class="name">Github</div>
+              </a>
+              <a
+                href="#"
+                target="_blank"
+              >
+                <img src="/myBlog/assets/icons/message.png" alt="" />
+                <div class="name">留言</div>
+              </a>
+            </div>
+          </div>
         </div>
       </div>
       <div class="content">
         <div class="article_wrap">
-          <div  class="recomend">
+          <div class="recomend">
             <div class="picture">
               <img :src="articles.recommend.frontmatter.url" alt="" />
             </div>
             <router-link :to="articles.recommend.path" class="article_info">
-              <div class="title">{{articles.recommend.frontmatter.title}}</div>
-              <div class="descript">{{articles.recommend.frontmatter.description}}</div>
+              <div class="title">
+                {{ articles.recommend.frontmatter.title }}
+              </div>
+              <div class="descript">
+                {{ articles.recommend.frontmatter.description }}
+              </div>
               <div class="tags">
                 <div class="author">
                   <div class="iconfont iconbussiness-man"></div>
-                  <div class="name">{{articles.recommend.frontmatter.author}}</div>
+                  <div class="name">
+                    {{ articles.recommend.frontmatter.author }}
+                  </div>
                 </div>
                 <div class="update_time">
                   <div class="iconfont iconclock"></div>
-                  <div class="time">{{articles.recommend.frontmatter.time}}</div>
+                  <div class="time">
+                    {{ articles.recommend.frontmatter.time }}
+                  </div>
                 </div>
               </div>
             </router-link>
           </div>
           <div class="article_list">
-            <div class="article_item" v-for="(item,index) in articles.list" :key="index">
+            <div
+              class="article_item"
+              v-for="(item, index) in articles.list"
+              :key="index"
+            >
               <ArticleBlock :info="item" />
             </div>
-            
           </div>
         </div>
         <div class="aside_info">
@@ -59,67 +103,23 @@
               <div class="email">邮箱：fizer19@gmail.com</div>
             </div>
           </div>
+          <!-- 标签 -->
+          <div class="tags">
+            <router-link
+              :to="item.link"
+              class="tag"
+              v-for="(item, index) in tags"
+              :key="index"
+              :style="{ background: `${tagColor[index]}` }"
+              >{{ item.name }}</router-link
+            >
+          </div>
           <div class="links">
             <div class="link_text">友情连接</div>
             <a href="https://www.vuepress.cn/">vuepress</a>
           </div>
         </div>
       </div>
-
-      <header class="hero">
-      <!-- <img
-        v-if="data.heroImage"
-        :src="$withBase(data.heroImage)"
-        :alt="data.heroAlt || 'hero'"
-      > -->
-
-      <h1
-        v-if="data.heroText !== null"
-        id="main-title"
-      >
-        {{ data.heroText || $title || 'Hello' }}
-      </h1>
-
-      <p
-        v-if="data.tagline !== null"
-        class="description"
-      >
-        {{ data.tagline || $description || 'Welcome to your VuePress site' }}
-      </p>
-
-      <p
-        v-if="data.actionText && data.actionLink"
-        class="action"
-      >
-        <NavLink
-          class="action-button"
-          :item="actionLink"
-        />
-      </p>
-    </header>
-
-    <div
-      v-if="data.features && data.features.length"
-      class="features"
-    >
-      <div
-        v-for="(feature, index) in data.features"
-        :key="index"
-        class="feature"
-      >
-        <h2>{{ feature.title }}</h2>
-        <p>{{ feature.details }}</p>
-      </div>
-    </div>
-
-    <Content class="theme-default-content custom" />
-
-    <div
-      v-if="data.footer"
-      class="footer"
-    >
-      {{ data.footer }}
-    </div>
     </main>
     <div class="copyright">Copyright | 2021- by fizer</div>
   </div>
@@ -127,12 +127,12 @@
 
 <script>
 import ArticleBlock from "@theme/components/ArticleBlock.vue";
-import NavLink from '@theme/components/NavLink.vue'
+import NavLink from "@theme/components/NavLink.vue";
 export default {
   name: "Home",
   components: {
     ArticleBlock,
-    NavLink
+    NavLink,
   },
   data() {
     return {
@@ -143,15 +143,45 @@ export default {
       ],
       active: 0,
       intevalId: "",
-      
-      
-      
-      
+      tags: [
+        {
+          name: "首页",
+          link: "/",
+        },
+        {
+          name: "教程",
+          link: "/tutorial/",
+        },
+        {
+          name: "随笔",
+          link: "/essay/",
+        },
+        {
+          name: "前端",
+          link: "/technology/fontend.html",
+        },
+        {
+          name: "关于我",
+          link: "//",
+        },
+        {
+          name: "神秘世界",
+          link: "//",
+        },
+      ],
+      tagColor: [
+        "#f2fddb",
+        "#92eef9",
+        "#fff5fa",
+        "#f2faff",
+        "#fff9ed",
+        "#fffff7",
+      ],
     };
   },
   mounted() {
     console.log("list", this.$site.pages);
-    
+
     this.item = this.$site.pages[14];
     //定时器切换轮播图
     if (this.intevalId) {
@@ -166,41 +196,39 @@ export default {
     }, 6000);
   },
   computed: {
-    
     articles() {
       const { pages } = this.$site;
       let obj = {
         //推荐文章
         recommend: {},
         // 首页文章列表，通过md文件中添加atHome: true显示
-        list: []
+        list: [],
       };
-      
+
       pages.forEach((item) => {
-        if ( item.frontmatter.atHome) {
+        if (item.frontmatter.atHome) {
           obj.list.push(item);
-          console.log('item',item);
+          console.log("item", item);
         }
-        if(item.frontmatter.recommend) {
+        if (item.frontmatter.recommend) {
           obj.recommend = item;
-          console.log('recommend',item);
+          console.log("recommend", item);
         }
       });
 
       return obj;
     },
-    data () {
-      return this.$page.frontmatter
+    data() {
+      return this.$page.frontmatter;
     },
 
-    actionLink () {
+    actionLink() {
       return {
         link: this.data.actionLink,
-        text: this.data.actionText
-      }
-    }
-  }
-  
+        text: this.data.actionText,
+      };
+    },
+  },
 };
 </script>
 
@@ -209,54 +237,108 @@ export default {
   position: relative;
   margin-top: 3.6rem;
   padding: 0.625rem;
-  height: 2000px;
 
+  // height: 2000px;
   .home {
     min-width: 60rem;
     max-width: 70rem;
-    margin: 1.25rem auto;
+    margin: 2rem auto 6rem;
+    background-color: #fff;
 
-    // 轮播图
-    .img_auto {
-      position: relative;
-      // width: 60rem;
-      height: 37rem;
-      border: 0.0625rem solid #eee;
-      box-shadow: 0 2px 10px #eee;
+    .head {
+      display: flex;
+      // align-items: center;
+      padding: 1.25rem;
 
-      .img_item {
-        position: absolute;
-        // top: 0;
+      .img_auto {
+        flex: 4;
+        position: relative;
         // width: 60rem;
-        height: 37rem;
-        transition: opacity 2s;
+        height: 27rem;
+        border: 0.0625rem solid #eee;
+        box-shadow: 0 2px 10px #eee;
 
-        img {
-          width: 100%;
-          height: 100%;
+        .img_item {
+          position: absolute;
+          // top: 0;
+          // width: 60rem;
+          height: 27rem;
+          transition: opacity 2s;
+
+          img {
+            width: 100%;
+            height: 100%;
+          }
+        }
+
+        .bullet_wrap {
+          position: absolute;
+          left: 50%;
+          bottom: 1.25rem;
+          transform: translateX(-50%);
+
+          .bullet {
+            display: inline-block;
+            width: 0.8rem;
+            height: 0.8rem;
+            border-radius: 0.4rem;
+            background-color: #eee;
+            margin-right: 10px;
+          }
+
+          // .bullet:nth-child(2) {
+          // margin: 0 .625rem;
+          // }
+          .active {
+            background-color: #b0bdc6;
+          }
         }
       }
 
-      .bullet_wrap {
-        position: absolute;
-        left: 50%;
-        bottom: 1.25rem;
-        transform: translateX(-50%);
+      // 黑板
+      .head_right {
+        flex: 2;
+        padding: 0.9375rem;
 
-        .bullet {
-          display: inline-block;
-          width: 0.8rem;
-          height: 0.8rem;
-          border-radius: 0.4rem;
-          background-color: #eee;
-          margin-right: 10px;
+        img {
+          width: 100%;
         }
 
-        // .bullet:nth-child(2) {
-        // margin: 0 .625rem;
-        // }
-        .active {
-          background-color: #b0bdc6;
+        .follow {
+          width: 90%;
+          margin-left: 1.5rem;
+          margin-top: 1.5rem;
+          .text {
+            font-size: 1.125rem;
+            height: 2.25rem;
+            line-height: 2.25rem;
+            font-weight: 700;
+            color: #666
+            // margin-left: 1rem;
+          }
+
+          .accounts {
+            border-top: 0.125rem solid #eee;
+            padding: 1.5rem 0;
+            display: flex;
+            // justify-content: center;
+            a {
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              margin-right: 2rem;
+              font-size: 0.8rem;
+
+              img {
+                width: 3.5rem;
+                height: 3.5rem;
+              }
+
+              .name {
+                margin-top: 0.3125rem;
+              }
+            }
+          }
         }
       }
     }
@@ -264,7 +346,7 @@ export default {
     // 内容
     .content {
       display: flex;
-      padding: 0 3.125rem;
+      margin: 0 1.25rem;
       margin-top: 1.875rem;
       // margin: 2.5rem auto;
       box-sizing: border-box;
@@ -342,13 +424,15 @@ export default {
         flex: 1;
         margin-left: 1.3rem;
         box-shadow: 0 3px 10px #eee;
-        padding: 1.25rem;
+        padding: 2.25rem;
 
+        // 关于我
         .about_me {
           .title {
             font-weight: 700;
-            color: #474645;
-            font-size: 1rem;
+            // color: #474645;
+            font-size: 1.125rem;
+            color: #666;
           }
 
           img {
@@ -367,19 +451,42 @@ export default {
 
             .description {
               color: #778cbd;
-              margin: .625rem 0;
+              margin: 0.625rem 0;
             }
+
             .email {
-              
             }
           }
         }
 
+        // 标签
+        .tags {
+          margin: 1.875rem 0;
+          display: flex;
+          justify-content: space-evenly;
+          flex-wrap: wrap;
+
+          .tag {
+            width: 3.125rem;
+            background-color: #eee;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0.625rem;
+            margin-bottom: 0.625rem;
+            font-size: 0.75rem;
+          }
+
+          .tag:hover {
+          }
+        }
+
+        // 链接
         .links {
           margin-top: 0.625rem;
 
           .link_text {
-            margin: .625rem 0;
+            margin: 0.625rem 0;
             font-size: 700;
           }
         }
@@ -387,14 +494,15 @@ export default {
     }
   }
 }
+
 .copyright {
-    position: absolute;
-    height: 3.125rem;
-    left: 50%;
-    bottom: 0;
-    transform: translateX(-50%);
-    line-height: 3.125rem;
-    color: #666;
+  position: absolute;
+  height: 3.125rem;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  line-height: 3.125rem;
+  color: #666;
 }
 
 @media (max-width: $MQMobile) {

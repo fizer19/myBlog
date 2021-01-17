@@ -15,7 +15,8 @@ module.exports = {
     },
     '@vuepress/back-to-top': true,
     '@vssue/vuepress-plugin-vssue': vssue,
-    '@vuepress/blog': true,
+    '@vuepress/blog': true
+     
   },
   
   themeConfig: {
