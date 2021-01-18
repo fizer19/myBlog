@@ -1,5 +1,6 @@
 <template>
   <div class="container">
+    <meta name="referrer" content="no-referrer">
     <main class="home">
       <div class="head">
         <!-- 轮播图 -->
@@ -115,9 +116,9 @@ export default {
   data() {
     return {
       autoImg: [
-        {src: "/myBlog/assets/img/item1.jpg",link: "#"},
-        {src: "/myBlog/assets/img/item2.jpg",link: "#"},
-        {src: "/myBlog/assets/img/item3.jpg",link: "#"},
+        {src: "https://s3.ax1x.com/2021/01/18/s6LLhd.jpg",link: "#"},
+        {src: "https://s3.ax1x.com/2021/01/18/s6jUte.jpg",link: "#"},
+        {src: "https://s3.ax1x.com/2021/01/18/s6jNkD.jpg",link: "#"},
         
       ],
       message: "好好学习，天天向上！",

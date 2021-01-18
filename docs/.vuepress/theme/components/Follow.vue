@@ -33,7 +33,7 @@ export default {
           link: "https://juejin.cn/user/720899266583527",
           src: "/myBlog/assets/icons/juejin.png",
         },
-        { name: "留言", link: "#", src: "/myBlog/assets/icons/weibo.png" },
+        { name: "留言", link: "#", src: "/myBlog/assets/icons/message.png" },
       ],
     };
   },
