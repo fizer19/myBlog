@@ -7,16 +7,16 @@
           <div
             class="img_item"
             :style="{ opacity: index == active ? 1 : 0 }"
-            v-for="(item, index) in urls"
+            v-for="(item, index) in autoImg"
             :key="index"
           >
-            <img :src="item" alt="图" />
+            <img :src="item.src" alt="图" />
           </div>
           <!-- 圆点 -->
           <div class="bullet_wrap">
             <div
               :class="index == active ? 'bullet active' : 'bullet'"
-              v-for="(item, index) in urls"
+              v-for="(item, index) in autoImg"
               :key="index"
               @click="active = index"
             ></div>
@@ -25,33 +25,11 @@
         <div class="head_right">
           <div class="blackboard">
             <img src="/myBlog/assets/img/blackboard.png" alt="" />
+            <div class="message">{{ message }}</div>
           </div>
-          <div class="follow">
-            <div class="text">关注我</div>
-            <div class="accounts">
-              <a
-                href="https://weibo.com/3290035597/profile?topnav=1&wvr=6&is_all=1#1610887982317"
-                target="_blank"
-              >
-                <img src="/myBlog/assets/icons/weibo.png" alt="" />
-                <div class="name">新浪微博</div>
-              </a>
-              <a
-                href="https://github.com/fizer19"
-                target="_blank"
-              >
-                <img src="/myBlog/assets/icons/github.png" alt="" />
-                <div class="name">Github</div>
-              </a>
-              <a
-                href="#"
-                target="_blank"
-              >
-                <img src="/myBlog/assets/icons/message.png" alt="" />
-                <div class="name">留言</div>
-              </a>
-            </div>
-          </div>
+          <!-- 关注我 -->
+          <Follow />
+          
         </div>
       </div>
       <div class="content">
@@ -67,7 +45,7 @@
               <div class="descript">
                 {{ articles.recommend.frontmatter.description }}
               </div>
-              <div class="tags">
+              <div class="recomend_info">
                 <div class="author">
                   <div class="iconfont iconbussiness-man"></div>
                   <div class="name">
@@ -95,7 +73,7 @@
         </div>
         <div class="aside_info">
           <div class="about_me">
-            <div class="title">关于我</div>
+            <!-- <div class="title">关于我</div> -->
             <img src="/myBlog/assets/img/avatar.png" alt="" />
             <div class="info">
               <div class="info_type">个人资料</div>
@@ -104,20 +82,9 @@
             </div>
           </div>
           <!-- 标签 -->
-          <div class="tags">
-            <router-link
-              :to="item.link"
-              class="tag"
-              v-for="(item, index) in tags"
-              :key="index"
-              :style="{ background: `${tagColor[index]}` }"
-              >{{ item.name }}</router-link
-            >
-          </div>
-          <div class="links">
-            <div class="link_text">友情连接</div>
-            <a href="https://www.vuepress.cn/">vuepress</a>
-          </div>
+          <Tags />
+         <!-- 友情链接 -->
+          <Links />
         </div>
       </div>
     </main>
@@ -128,59 +95,41 @@
 <script>
 import ArticleBlock from "@theme/components/ArticleBlock.vue";
 import NavLink from "@theme/components/NavLink.vue";
+
+import Follow from "@theme/components/Follow.vue";
+import Tags from "@theme/components/Tags.vue";
+import Links from "@theme/components/Links.vue";
+
+
 export default {
   name: "Home",
   components: {
     ArticleBlock,
     NavLink,
+    Follow,
+    Tags,
+    Links,
+
   },
+
   data() {
     return {
-      urls: [
-        "/myBlog/assets/img/item1.jpg",
-        "/myBlog/assets/img/item2.jpg",
-        "/myBlog/assets/img/item3.jpg",
+      autoImg: [
+        {src: "/myBlog/assets/img/item1.jpg",link: "#"},
+        {src: "/myBlog/assets/img/item2.jpg",link: "#"},
+        {src: "/myBlog/assets/img/item3.jpg",link: "#"},
+        
       ],
+      message: "好好学习，天天向上！",
       active: 0,
       intevalId: "",
-      tags: [
-        {
-          name: "首页",
-          link: "/",
-        },
-        {
-          name: "教程",
-          link: "/tutorial/",
-        },
-        {
-          name: "随笔",
-          link: "/essay/",
-        },
-        {
-          name: "前端",
-          link: "/technology/fontend.html",
-        },
-        {
-          name: "关于我",
-          link: "//",
-        },
-        {
-          name: "神秘世界",
-          link: "//",
-        },
-      ],
-      tagColor: [
-        "#f2fddb",
-        "#92eef9",
-        "#fff5fa",
-        "#f2faff",
-        "#fff9ed",
-        "#fffff7",
-      ],
+      
+      //友情链接
+      // links: [{ name: "vuepress", link: "https://www.vuepress.cn/" }],
     };
   },
   mounted() {
-    console.log("list", this.$site.pages);
+    // console.log("list", this.$site.pages);
 
     this.item = this.$site.pages[14];
     //定时器切换轮播图
@@ -188,7 +137,7 @@ export default {
       clearInterval(this.intevalId);
     }
     this.intevalId = setInterval((item) => {
-      if (this.active == this.urls.length - 1) {
+      if (this.active == this.autoImg.length - 1) {
         this.active = 0;
       } else {
         this.active += 1;
@@ -201,20 +150,28 @@ export default {
       let obj = {
         //推荐文章
         recommend: {},
-        // 首页文章列表，通过md文件中添加atHome: true显示
+        //十篇
         list: [],
       };
-
+      let all = [];
       pages.forEach((item) => {
-        if (item.frontmatter.atHome) {
-          obj.list.push(item);
-          console.log("item", item);
+        if(item.frontmatter.categories && !item.frontmatter.recommend) {
+          all.push(item)
         }
         if (item.frontmatter.recommend) {
           obj.recommend = item;
-          console.log("recommend", item);
+          // console.log("recommend", item);
         }
       });
+      //按时间排序，取前十篇
+      all.sort(function (a, b) {
+        if (a.frontmatter.time > b.frontmatter.time) {
+          return -1;
+        } else {
+          return 1;
+        }
+      });
+      obj.list = all.slice(0,10);
 
       return obj;
     },
@@ -232,7 +189,7 @@ export default {
 };
 </script>
 
-<style lang="stylus" >
+<style lang="stylus" scoped>
 .container {
   position: relative;
   margin-top: 3.6rem;
@@ -254,15 +211,14 @@ export default {
         flex: 4;
         position: relative;
         // width: 60rem;
-        height: 27rem;
+        height: 25rem;
         border: 0.0625rem solid #eee;
         box-shadow: 0 2px 10px #eee;
 
         .img_item {
           position: absolute;
-          // top: 0;
-          // width: 60rem;
-          height: 27rem;
+          
+          height: 25rem;
           transition: opacity 2s;
 
           img {
@@ -297,53 +253,32 @@ export default {
 
       // 黑板
       .head_right {
+        position: relative;
         flex: 2;
-        padding: 0.9375rem;
+        width: 23.75rem;
+        height: 13.125rem;
+        padding: 0 0.9375rem;
 
         img {
           width: 100%;
         }
 
-        .follow {
-          width: 90%;
-          margin-left: 1.5rem;
-          margin-top: 1.5rem;
-          .text {
-            font-size: 1.125rem;
-            height: 2.25rem;
-            line-height: 2.25rem;
-            font-weight: 700;
-            color: #666
-            // margin-left: 1rem;
-          }
-
-          .accounts {
-            border-top: 0.125rem solid #eee;
-            padding: 1.5rem 0;
-            display: flex;
-            // justify-content: center;
-            a {
-              display: flex;
-              flex-direction: column;
-              align-items: center;
-              margin-right: 2rem;
-              font-size: 0.8rem;
-
-              img {
-                width: 3.5rem;
-                height: 3.5rem;
-              }
-
-              .name {
-                margin-top: 0.3125rem;
-              }
-            }
-          }
+        .message {
+          position: absolute;
+          top: 50%;
+          // left: 50%;
+          transform: translateY(-50%);
+          padding: 0 2.25rem;
+          font-family: 'STXingkai', 'SimHei', '黑体', sans-serif;
+          color: #fff;
+          font-size: 1.2rem;
         }
+
+        
       }
     }
 
-    // 内容
+    // 文章和侧边信息
     .content {
       display: flex;
       margin: 0 1.25rem;
@@ -390,7 +325,7 @@ export default {
               text-indent: 1.5rem;
             }
 
-            .tags {
+            .recomend_info {
               display: flex;
               font-size: 0.75rem;
               color: #999;
@@ -422,19 +357,18 @@ export default {
 
       .aside_info {
         flex: 1;
-        margin-left: 1.3rem;
-        box-shadow: 0 3px 10px #eee;
-        padding: 2.25rem;
+        margin-left: 1rem;
+        // box-shadow: 0 3px 10px #eee;
+        padding: 0 2.25rem;
 
         // 关于我
         .about_me {
-          .title {
-            font-weight: 700;
-            // color: #474645;
-            font-size: 1.125rem;
-            color: #666;
-          }
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          border: 0.0625rem solid #c7e5eb;
 
+          // }
           img {
             width: 12.5rem;
             height: 12.5rem;
@@ -458,38 +392,7 @@ export default {
             }
           }
         }
-
-        // 标签
-        .tags {
-          margin: 1.875rem 0;
-          display: flex;
-          justify-content: space-evenly;
-          flex-wrap: wrap;
-
-          .tag {
-            width: 3.125rem;
-            background-color: #eee;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 0.625rem;
-            margin-bottom: 0.625rem;
-            font-size: 0.75rem;
-          }
-
-          .tag:hover {
-          }
-        }
-
-        // 链接
-        .links {
-          margin-top: 0.625rem;
-
-          .link_text {
-            margin: 0.625rem 0;
-            font-size: 700;
-          }
-        }
+     
       }
     }
   }

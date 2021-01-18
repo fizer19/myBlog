@@ -2,10 +2,10 @@
   <aside class="sidebar">
     <div class="sidebar_list">
       <div class="sidebar_title">{{title}}</div>
-      <div class="page_list" v-for="(item, index) in articleList">
-        <router-link :to="item.path" class="article_item">{{
+      <div :class="active == item.title ? 'page_list active':'page_list'" v-for="(item, index) in articleList">
+        <a :href="item.path" class="article_item">{{
           item.title
-        }}</router-link>
+        }}</a>
       </div>
     </div>
     <NavLinks />
@@ -33,7 +33,8 @@ export default {
   props: ["items"],
   data() {
     return {
-      title: ''
+      title: '',
+      active: ''
     }
   },
   // methods: {
@@ -44,7 +45,8 @@ export default {
   // },
   mounted() {
     this.title = this.$frontmatter.categories;
-    
+    this.active = this.$frontmatter.title;
+    // console.log('this',this.$frontmatter);
   },
   computed: {
     articleList() {
@@ -85,8 +87,18 @@ export default {
     }
 
     .page_list {
-      margin-bottom: 1rem;
+      // margin-bottom: 1rem;
+      height: 2.25rem;
+      line-height: 2.25rem;
+      padding-left: .3125rem;
+      border-radius: .15rem;
     }
+    
+    .active {
+      border-left: .125rem solid #3eaf7c;
+      background-color: #f9f9f9;
+    }
+    
   }
 
   .nav-links {

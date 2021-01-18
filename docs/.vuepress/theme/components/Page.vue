@@ -23,7 +23,7 @@ export default {
   components: { PageEdit, PageNav },
   props: ['sidebarItems'],
   mounted() {
-    console.log('items',this.sidebarItems);
+    // console.log('items',this.sidebarItems);
   }
   
 }

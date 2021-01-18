@@ -77,7 +77,7 @@ export default {
     }
   },
   mounted() {
-    console.log('pre',this.prev,this.next);
+    // console.log('pre',this.prev,this.next);
   }
 }
 
