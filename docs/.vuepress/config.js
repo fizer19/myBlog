@@ -9,13 +9,15 @@ module.exports = {
   plugins: {
     '@vuepress/last-updated': {
       transformer: (timestamp) => {
-        
         return moment(timestamp).format('YYYY-MM-DD')
       }
     },
     '@vuepress/back-to-top': true,
     '@vssue/vuepress-plugin-vssue': vssue,
-    '@vuepress/blog': true
+    '@vuepress/blog': true,
+    '@vuepress/search': {
+      searchMaxSuggestions: 10
+    }
      
   },
   

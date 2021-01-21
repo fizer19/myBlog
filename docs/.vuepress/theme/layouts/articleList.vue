@@ -1,5 +1,6 @@
 <template>
   <div class="container">
+    <meta charset="UTF-8">
     <Navbar v-if="shouldShowNavbar" @toggle-sidebar="toggleSidebar" />
 
     <main class="article_wrap">

@@ -58,6 +58,13 @@ export default {
           list.push(item);
         }
       });
+      list.sort(function (a, b) {
+        if (a.frontmatter.time > b.frontmatter.time) {
+          return -1;
+        } else {
+          return 1;
+        }
+      });
 
       return list;
     },
@@ -83,6 +90,7 @@ export default {
 
     .sidebar_title {
       margin-bottom: 1rem;
+      padding-left: .625rem;
       font-weight 700
     }
 
@@ -90,13 +98,13 @@ export default {
       // margin-bottom: 1rem;
       height: 2.25rem;
       line-height: 2.25rem;
-      padding-left: .3125rem;
+      padding-left: 1rem;
       border-radius: .15rem;
     }
     
     .active {
       border-left: .125rem solid #3eaf7c;
-      background-color: #f9f9f9;
+      background-color: #fff;
     }
     
   }

@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <meta name="referrer" content="no-referrer">
+    <meta name="referrer" content="no-referrer" />
     <main class="home">
       <div class="head">
         <!-- 轮播图 -->
@@ -19,7 +19,7 @@
               :class="index == active ? 'bullet active' : 'bullet'"
               v-for="(item, index) in autoImg"
               :key="index"
-              @click="active = index"
+              @click="onAutoImgClick(index)"
             ></div>
           </div>
         </div>
@@ -30,7 +30,6 @@
           </div>
           <!-- 关注我 -->
           <Follow />
-          
         </div>
       </div>
       <div class="content">
@@ -84,7 +83,7 @@
           </div>
           <!-- 标签 -->
           <Tags />
-         <!-- 友情链接 -->
+          <!-- 友情链接 -->
           <Links />
         </div>
       </div>
@@ -101,7 +100,6 @@ import Follow from "@theme/components/Follow.vue";
 import Tags from "@theme/components/Tags.vue";
 import Links from "@theme/components/Links.vue";
 
-
 export default {
   name: "Home",
   components: {
@@ -110,40 +108,46 @@ export default {
     Follow,
     Tags,
     Links,
-
   },
 
   data() {
     return {
       autoImg: [
-        {src: "https://s3.ax1x.com/2021/01/18/s6LLhd.jpg",link: "#"},
-        {src: "https://s3.ax1x.com/2021/01/18/s6jUte.jpg",link: "#"},
-        {src: "https://s3.ax1x.com/2021/01/18/s6jNkD.jpg",link: "#"},
-        
+        { src: "https://s3.ax1x.com/2021/01/19/sg4NfP.jpg", link: "#" },
+        { src: "https://s3.ax1x.com/2021/01/19/s2F9Ej.jpg", link: "#" },
+        { src: "https://s3.ax1x.com/2021/01/19/s2FSbQ.jpg", link: "#" },
       ],
       message: "好好学习，天天向上！",
       active: 0,
       intevalId: "",
-      
+
       //友情链接
       // links: [{ name: "vuepress", link: "https://www.vuepress.cn/" }],
     };
   },
-  mounted() {
-    // console.log("list", this.$site.pages);
-
-    this.item = this.$site.pages[14];
-    //定时器切换轮播图
-    if (this.intevalId) {
-      clearInterval(this.intevalId);
-    }
-    this.intevalId = setInterval((item) => {
-      if (this.active == this.autoImg.length - 1) {
-        this.active = 0;
-      } else {
-        this.active += 1;
+  methods: {
+    onAutoImgClick(index) {
+      this.active = index;
+      this.timer();
+    },
+    //定时器
+    timer() {
+      //定时器切换轮播图
+      if (this.intevalId) {
+        clearInterval(this.intevalId);
       }
-    }, 6000);
+      this.intevalId = setInterval((item) => {
+        if (this.active == this.autoImg.length - 1) {
+          this.active = 0;
+        } else {
+          this.active += 1;
+        }
+      }, 6000);
+    },
+  },
+  mounted() {
+    // console.log('site',this.articles);
+    this.timer();
   },
   computed: {
     articles() {
@@ -156,8 +160,9 @@ export default {
       };
       let all = [];
       pages.forEach((item) => {
-        if(item.frontmatter.categories && !item.frontmatter.recommend) {
-          all.push(item)
+        if (item.frontmatter.categories && !item.frontmatter.recommend) {
+          
+          all.push(item);
         }
         if (item.frontmatter.recommend) {
           obj.recommend = item;
@@ -172,20 +177,20 @@ export default {
           return 1;
         }
       });
-      obj.list = all.slice(0,10);
+      obj.list = all.slice(0, 10);
 
       return obj;
     },
-    data() {
-      return this.$page.frontmatter;
-    },
+    // data() {
+    //   return this.$page.frontmatter;
+    // },
 
-    actionLink() {
-      return {
-        link: this.data.actionLink,
-        text: this.data.actionText,
-      };
-    },
+    // actionLink() {
+    //   return {
+    //     link: this.data.actionLink,
+    //     text: this.data.actionText,
+    //   };
+    // },
   },
 };
 </script>
@@ -218,7 +223,6 @@ export default {
 
         .img_item {
           position: absolute;
-          
           height: 25rem;
           transition: opacity 2s;
 
@@ -274,8 +278,6 @@ export default {
           color: #fff;
           font-size: 1.2rem;
         }
-
-        
       }
     }
 
@@ -393,7 +395,6 @@ export default {
             }
           }
         }
-     
       }
     }
   }

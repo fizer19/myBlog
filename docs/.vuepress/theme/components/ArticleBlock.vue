@@ -32,9 +32,7 @@ export default {
       defaultImg: "/myBlog/assets/img/article1.png",
     };
   },
-  mounted() {
-    // console.log(this.info);
-  },
+  
 };
 </script>
 
