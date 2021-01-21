@@ -34,7 +34,9 @@
       </div>
       <div class="content">
         <div class="article_wrap">
+          <!-- 推荐 -->
           <div class="recomend">
+            <div class="corner_flag">推荐<div class="triangle"></div></div>
             <div class="picture">
               <img :src="articles.recommend.frontmatter.url" alt="" />
             </div>
@@ -61,6 +63,7 @@
               </div>
             </router-link>
           </div>
+          <div class="newest_article">最新文章</div>
           <div class="article_list">
             <div
               class="article_item"
@@ -284,19 +287,36 @@ export default {
     // 文章和侧边信息
     .content {
       display: flex;
-      margin: 0 1.25rem;
-      margin-top: 1.875rem;
+      // margin: 0 1.25rem;
+      margin: 1.875rem 1.25rem;
       // margin: 2.5rem auto;
       box-sizing: border-box;
 
       .article_wrap {
         flex: 2;
-
+        margin-bottom: 1rem;
         // background-color: pink;
         .recomend {
+          position: relative;
           box-shadow: 0 3px 10px #eee;
           padding: 1.25rem;
-
+          .corner_flag {
+            position: absolute;
+            left: -0.625rem;
+            top: -0.375rem;
+            background-color: #86b4fd;
+            padding: .3125rem;
+            border-radius: .3125rem;
+            .triangle {
+              position: absolute;
+              bottom: -0.4375rem;
+              left: 0;
+              width: 0;
+              height: 0;
+              border-top: 10px solid #86b4fd;
+              border-left: 10px solid transparent;
+            }
+          }
           .picture {
             img {
               width: 100%;
@@ -350,7 +370,12 @@ export default {
             }
           }
         }
-
+        .newest_article {
+          height: 3.5rem;
+          line-height: 3.5rem;
+          font-weight: 700;
+          border-bottom: 5px solid #92eef9;
+        }
         .article_list {
           margin-top: 1.25rem;
           padding: 0.625rem;
