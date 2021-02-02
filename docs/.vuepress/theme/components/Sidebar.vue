@@ -31,24 +31,14 @@ export default {
   components: { SidebarLinks, NavLinks },
 
   props: ["items"],
-  data() {
-    return {
-      title: '',
-      active: ''
-    }
-  },
-  // methods: {
-  //   toggleSidebar(to) {
-  //     this.isSidebarOpen = typeof to === "boolean" ? to : !this.isSidebarOpen;
-  //     this.$emit("toggle-sidebar", this.isSidebarOpen);
-  //   },
-  // },
-  mounted() {
-    this.title = this.$frontmatter.categories;
-    this.active = this.$frontmatter.title;
-    // console.log('this',this.$frontmatter);
-  },
+  
   computed: {
+    title() {
+      return this.$frontmatter.categories;
+    },
+    active() {
+      return this.$frontmatter.title;
+    },
     articleList() {
       const { pages } = this.$site;
       const { categories } = this.$frontmatter;
@@ -69,6 +59,9 @@ export default {
       return list;
     },
   },
+  watch: {
+    
+  }
 };
 </script>
 
@@ -100,6 +93,14 @@ export default {
       line-height: 2.25rem;
       padding-left: 1rem;
       border-radius: .15rem;
+      .article_item {
+        width: 100%;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+      }
+      
+
     }
     
     .active {

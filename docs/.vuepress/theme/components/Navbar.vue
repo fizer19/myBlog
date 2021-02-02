@@ -14,7 +14,7 @@
         ref="siteName"
         class="site-name"
         :class="{ 'can-hide': $site.themeConfig.logo }"
-        >{{ $siteTitle }}</span
+        >{{ $siteTitle.match(/(\S*)-/)[1] }}</span
       >
     </RouterLink>
 

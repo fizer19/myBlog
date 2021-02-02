@@ -4,7 +4,13 @@ const moment = require('moment');
 moment.locale("zh-cn");
 module.exports = {
   base: "/myBlog/",
-  title: "fizer",
+  title: "fizer的个人博客-分享技术记录生活",
+  description: "个人博客，技术和教程分享，偶尔写写随笔",
+  head: [
+    ['link', { rel: 'icon', href: '/favicon.ico' }],
+    ['meta', { name: 'author', content: 'fizer' }],
+    ['meta', { name: 'keywords', content: 'vuepress 介绍，fizer的个人博客' }],
+  ],
   // base: "/myBlog/",
   plugins: {
     '@vuepress/last-updated': {

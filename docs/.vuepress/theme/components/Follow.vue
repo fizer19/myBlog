@@ -20,7 +20,7 @@ export default {
         {
           name: "新浪微博",
           link:
-            "https://weibo.com/3290035597/profile?topnav=1&wvr=6&is_all=1#1610887982317",
+            "https://weibo.com/u/3290035597?is_all=1",
           src: "/myBlog/assets/icons/weibo.png",
         },
         {
@@ -33,7 +33,7 @@ export default {
           link: "https://juejin.cn/user/720899266583527",
           src: "/myBlog/assets/icons/juejin.png",
         },
-        { name: "留言", link: "#", src: "/myBlog/assets/icons/message.png" },
+        { name: "留言", link: "/myBlog/message/message.html", src: "/myBlog/assets/icons/message.png" },
       ],
     };
   },

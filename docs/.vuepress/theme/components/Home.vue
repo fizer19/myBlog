@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container" >
     <meta name="referrer" content="no-referrer" />
     <main class="home">
       <div class="head">
@@ -81,7 +81,7 @@
             <div class="info">
               <div class="info_type">个人资料</div>
               <div class="description">95后，双鱼座，兴趣广泛，童心未泯</div>
-              <div class="email">邮箱：fizer19@gmail.com</div>
+              <div class="email">邮箱：lifizer19@gmail.com</div>
             </div>
           </div>
           <!-- 标签 -->
@@ -149,7 +149,7 @@ export default {
     },
   },
   mounted() {
-    // console.log('site',this.articles);
+    // console.log('site');
     this.timer();
   },
   computed: {
