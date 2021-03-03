@@ -1,8 +1,8 @@
 ---
 title: Echarts标签文字过长以及在app端formatter函数失效问题
-description: 一位好的前端开发工程师在知识体系上既要有广度，又要有深度。
+description: 在微信小程序中使用Echarts，柱状图横坐标标签文字太长解决方案以及formatter回调函数失效。
 categories: 前端
-url: https://s3.ax1x.com/2021/01/25/sqgc4K.jpg
+url: https://s3.ax1x.com/2021/02/02/yn6g1I.jpg
 
 author: 梨先生
 
