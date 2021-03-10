@@ -6,7 +6,7 @@ url: https://s3.ax1x.com/2021/02/02/yn6g1I.jpg
 
 author: 梨先生
 
-time: "2021-02-1"
+time: "2021-01-20"
 ---
 
 ### Echarts标签文字过长以及在app端formatter函数失效问题
