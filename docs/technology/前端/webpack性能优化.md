@@ -3,7 +3,6 @@ title: webpack性能优化
 
 categories: 前端
 description: webpack性能优化
-url: https://s3.ax1x.com/2021/03/10/6GDMTO.png
 author: 梨先生
 time: "2021-02-03"
 ---

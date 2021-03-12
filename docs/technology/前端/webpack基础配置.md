@@ -3,7 +3,6 @@ title: webpack资源打包
 
 categories: 前端
 description: webpack详细笔记，哪里不会看哪里，看完了的你：妙啊！
-url: https://s3.ax1x.com/2021/03/10/6GDMTO.png
 author: 梨先生
 time: "2021-02-01"
 ---

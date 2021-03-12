@@ -2,7 +2,7 @@
 title: 移动端rem适配方案
 description: rem适配方案技术使用，第一次学的时候一遍学一边哭，搞明白后，白哭了。
 categories: css
-url: https://s3.ax1x.com/2021/03/10/6GainO.png
+url: https://s3.ax1x.com/2021/03/10/6G4LDg.png
 author: 梨先生
 time: "2021-01-29"
 ---

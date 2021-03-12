@@ -3,7 +3,7 @@ title: webpack更多配置
 
 categories: 前端
 description: 除了简单的将各种资源打包，还有压缩优化兼容性处理等配置。
-url: https://s3.ax1x.com/2021/03/10/6GDMTO.png
+
 author: 梨先生
 time: "2021-02-02"
 ---

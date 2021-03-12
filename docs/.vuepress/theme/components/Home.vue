@@ -116,9 +116,9 @@ export default {
   data() {
     return {
       autoImg: [
-        { src: "https://s3.ax1x.com/2021/01/19/sg4NfP.jpg", link: "#" },
-        { src: "https://s3.ax1x.com/2021/01/19/s2F9Ej.jpg", link: "#" },
-        { src: "https://s3.ax1x.com/2021/01/19/s2FSbQ.jpg", link: "#" },
+        { src: "/myBlog/assets/img/bg1.jpg", link: "#" },
+        { src: "/myBlog/assets/img/bg2.jpg", link: "#" },
+        { src: "/myBlog/assets/img/bg3.jpg", link: "#" },
       ],
       message: "好好学习，天天向上！",
       active: 0,
