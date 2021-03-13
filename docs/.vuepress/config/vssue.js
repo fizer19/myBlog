@@ -5,7 +5,7 @@ module.exports = {
     // 其他的 Vssue 配置
     owner: 'fizer19',
     repo: 'myBlog',
-    clientId: 'baaca1459fbe31952342',
-    clientSecret: '440324081bae342fe4149d0ff085c9ff35f1f130',
+    clientId: '846ffb017e7fe22d22c1',
+    clientSecret: 'c7df02c5ecdb8ec7b9f240dfa5a0d849b629f965',
     autoCreateIssue: true
   }

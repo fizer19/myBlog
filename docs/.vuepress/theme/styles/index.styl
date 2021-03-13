@@ -10,7 +10,7 @@ html, body
   padding 0
   margin 0
   // background-color #fffbf0
-  background-color #fffbf0
+  background-color #fff
 
 body
   font-family -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif
@@ -44,7 +44,7 @@ body
 
 .sidebar
   font-size 16px
-  background-color #fffbf0
+  background-color #fff
   // background-color #fffbf0
   width $sidebarWidth
   position fixed
@@ -194,6 +194,14 @@ th, td
     .sidebar
       top 0
 
+.v[data-class=v] {
+  width: 80%;
+  margin-left: 10px;
+  padding: 10px;
+  .vwrap {
+    border: 3px solid #eee !important;
+  }
+}
 @media (min-width: ($MQMobile + 1px))
   .theme-container.no-sidebar
     .sidebar
