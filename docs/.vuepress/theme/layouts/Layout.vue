@@ -121,9 +121,8 @@ export default {
     //       el: '#vcomments',
     //       appId: 'DkvmU0QRlpFCowVusMta5dKI-gzGzoHsz',
     //       appKey: 'LPW4MC1tpFdyvrIvXH9l8ojQ',
-    //       placeholder: '想说点什么吗？',
-    //       visitor: true,
-    //       enableQQ: true
+    //       placeholder: '想说点什么吗？'
+          
     //   })
     // },
     toggleSidebar(to) {

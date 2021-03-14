@@ -1,6 +1,7 @@
 const nav = require('./config/nav.js')
-// const vssue = require('./config/vssue.js')
+// const valine = require('./config/valine.js')
 const moment = require('moment');
+const valine = require('./config/valine.js');
 moment.locale("zh-cn");
 module.exports = {
   base: "/myBlog/",
@@ -19,19 +20,8 @@ module.exports = {
       }
     },
     '@vuepress/back-to-top': true,
-    'vuepress-plugin-comment':
-      {
-        choosen: 'valine', 
-        // options选项中的所有参数，会传给Valine的配置
-        options: {
-          el: '#valine-vuepress-comment',
-          appId: 'DkvmU0QRlpFCowVusMta5dKI-gzGzoHsz',
-          appKey: 'LPW4MC1tpFdyvrIvXH9l8ojQ',
-          visitor: true,
-          enableQQ: true,
-          placeholder: '想说点什么吗？',
-        }
-      },
+    'vuepress-plugin-comment': valine,
+      
 
     // '@vssue/vuepress-plugin-vssue': vssue,
     '@vuepress/blog': true,

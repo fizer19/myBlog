@@ -2,7 +2,7 @@
 node_modules/
 unpackage/
 dist/
-vssue.js
+valine.js
 # local env files
 .env.local
 .env.*.local

@@ -122,7 +122,6 @@ export default {
           return 1;
         }
       });
-      console.log('list',list);
       return list;
     },
     shouldShowNavbar() {

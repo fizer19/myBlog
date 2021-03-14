@@ -3,9 +3,10 @@
     <div class="sidebar_list">
       <div class="sidebar_title">{{title}}</div>
       <div :class="active == item.title ? 'page_list active':'page_list'" v-for="(item, index) in articleList" :key="index">
-        <a :href="item.path" class="article_item">{{
+        <router-link :to="item.path" class="article_item">{{
           item.title
-        }}</a>
+        }}</router-link>
+        
       </div>
     </div>
     <NavLinks />
@@ -45,7 +46,7 @@ export default {
       let list = [];
       pages.forEach((item) => {
         if (categories && item.frontmatter.categories == categories) {
-          item.path = '/myBlog' + item.path;
+          // item.path = '/myBlog' + item.path;
           list.push(item);
         }
       });
@@ -56,7 +57,7 @@ export default {
           return 1;
         }
       });
-      console.log('list',list);
+      console.log(list);
       return list;
     },
   },

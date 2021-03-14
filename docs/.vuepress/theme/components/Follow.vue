@@ -2,7 +2,7 @@
   <div class="follow">
     <div class="text">关注我</div>
     <div class="accounts">
-      <div class="way" v-for="(item,index) in ways">
+      <div class="way" v-for= "(item,index) in ways" :key="index">
         <a :href="item.link" target="_blank">
           <img :src="item.src" alt="" />
           <div class="name">{{item.name}}</div>
@@ -33,7 +33,7 @@ export default {
           link: "https://juejin.cn/user/720899266583527",
           src: "/myBlog/assets/icons/juejin.png",
         },
-        { name: "留言", link: "/myBlog/message/message.html", src: "/myBlog/assets/icons/message.png" },
+        { name: "留言", link: "/message/message.html", src: "/myBlog/assets/icons/message.png" },
       ],
     };
   },
