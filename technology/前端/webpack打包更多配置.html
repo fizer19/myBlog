@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>webpack更多配置 | fizer的个人博客-分享技术记录生活</title>
+    <meta name="generator" content="VuePress 1.7.1">
+    <link rel="icon" href="/myBlog/favicon.ico">
+    <meta name="description" content="除了简单的将各种资源打包，还有压缩优化兼容性处理等配置。">
+    <meta name="author" content="fizer">
+    <meta name="keywords" content="vuepress 介绍，fizer的个人博客">
+    
+    <link rel="preload" href="/myBlog/assets/css/0.styles.d568e558.css" as="style"><link rel="preload" href="/myBlog/assets/js/app.b01551eb.js" as="script"><link rel="preload" href="/myBlog/assets/js/3.33770070.js" as="script"><link rel="preload" href="/myBlog/assets/js/1.ef2f72d5.js" as="script"><link rel="preload" href="/myBlog/assets/js/27.fbb666bf.js" as="script"><link rel="prefetch" href="/myBlog/assets/js/10.d62598e7.js"><link rel="prefetch" href="/myBlog/assets/js/11.a11f11e4.js"><link rel="prefetch" href="/myBlog/assets/js/12.4abc77a9.js"><link rel="prefetch" href="/myBlog/assets/js/13.2fb267eb.js"><link rel="prefetch" href="/myBlog/assets/js/14.08870612.js"><link rel="prefetch" href="/myBlog/assets/js/15.e2859422.js"><link rel="prefetch" href="/myBlog/assets/js/16.0d6f0144.js"><link rel="prefetch" href="/myBlog/assets/js/17.5714f9a6.js"><link rel="prefetch" href="/myBlog/assets/js/18.bab89c38.js"><link rel="prefetch" href="/myBlog/assets/js/19.f33b639b.js"><link rel="prefetch" href="/myBlog/assets/js/20.c74f7052.js"><link rel="prefetch" href="/myBlog/assets/js/21.0be5f80b.js"><link rel="prefetch" href="/myBlog/assets/js/22.20b1a26d.js"><link rel="prefetch" href="/myBlog/assets/js/23.265d1681.js"><link rel="prefetch" href="/myBlog/assets/js/24.e4783ac9.js"><link rel="prefetch" href="/myBlog/assets/js/25.a9c0d1d2.js"><link rel="prefetch" href="/myBlog/assets/js/26.691ba954.js"><link rel="prefetch" href="/myBlog/assets/js/28.420014ac.js"><link rel="prefetch" href="/myBlog/assets/js/29.bd4262bf.js"><link rel="prefetch" href="/myBlog/assets/js/30.66f733b6.js"><link rel="prefetch" href="/myBlog/assets/js/31.0a72c44d.js"><link rel="prefetch" href="/myBlog/assets/js/4.bead3ccb.js"><link rel="prefetch" href="/myBlog/assets/js/5.8892dfd1.js"><link rel="prefetch" href="/myBlog/assets/js/6.5fa08267.js"><link rel="prefetch" href="/myBlog/assets/js/7.7fbedbce.js"><link rel="prefetch" href="/myBlog/assets/js/8.886c04f0.js"><link rel="prefetch" href="/myBlog/assets/js/9.6cb0a32d.js">
+    <link rel="stylesheet" href="/myBlog/assets/css/0.styles.d568e558.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container" data-v-934bcd86><header class="navbar" data-v-934bcd86><a href="/myBlog/" class="home-link router-link-active"><img src="/myBlog/assets/img/avatar.png" alt="fizer的个人博客-分享技术记录生活" class="logo"> <span class="site-name can-hide">fizer的个人博客</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/myBlog/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="技术分享" class="dropdown-title"><span class="title">技术分享</span> <span class="arrow down"></span></button> <button type="button" aria-label="技术分享" class="mobile-dropdown-title"><span class="title">技术分享</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myBlog/technology/fontend.html" class="nav-link">
+  前端相关
+</a></li><li class="dropdown-item"><!----> <a href="/myBlog/technology/html.html" class="nav-link">
+  HTML
+</a></li><li class="dropdown-item"><!----> <a href="/myBlog/technology/css.html" class="nav-link">
+  CSS
+</a></li><li class="dropdown-item"><!----> <a href="/myBlog/technology/javaScript.html" class="nav-link">
+  JavaScript
+</a></li></ul></div></div><div class="nav-item"><a href="/myBlog/tutorial/" class="nav-link">
+  教程
+</a></div><div class="nav-item"><a href="/myBlog/essay/" class="nav-link">
+  随笔
+</a></div> <!----></nav></div></header> <div class="sidebar-mask" data-v-934bcd86></div> <aside class="sidebar" data-v-934bcd86><div class="sidebar_list"><div class="sidebar_title">前端</div> <div class="page_list"><a href="/myBlog/technology/%E5%89%8D%E7%AB%AF/webpack%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96.html" class="article_item">webpack性能优化</a></div><div class="page_list active"><a href="/myBlog/technology/%E5%89%8D%E7%AB%AF/webpack%E6%89%93%E5%8C%85%E6%9B%B4%E5%A4%9A%E9%85%8D%E7%BD%AE.html" aria-current="page" class="article_item router-link-exact-active router-link-active">webpack更多配置</a></div><div class="page_list"><a href="/myBlog/technology/%E5%89%8D%E7%AB%AF/webpack%E5%9F%BA%E7%A1%80%E9%85%8D%E7%BD%AE.html" class="article_item">webpack资源打包</a></div><div class="page_list"><a href="/myBlog/technology/%E5%89%8D%E7%AB%AF/%E5%89%8D%E7%AB%AF%E8%A6%81%E6%8E%8C%E6%8F%A1%E5%93%AA%E4%BA%9B%E7%9F%A5%E8%AF%86.html" class="article_item">前端开发要掌握哪些知识？</a></div><div class="page_list"><a href="/myBlog/technology/%E5%89%8D%E7%AB%AF/Echarts%E6%A0%87%E7%AD%BE%E6%96%87%E5%AD%97%E8%BF%87%E9%95%BF.html" class="article_item">Echarts标签文字过长以及在app端formatter函数失效问题</a></div></div> <nav class="nav-links"><div class="nav-item"><a href="/myBlog/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="技术分享" class="dropdown-title"><span class="title">技术分享</span> <span class="arrow down"></span></button> <button type="button" aria-label="技术分享" class="mobile-dropdown-title"><span class="title">技术分享</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/myBlog/technology/fontend.html" class="nav-link">
+  前端相关
+</a></li><li class="dropdown-item"><!----> <a href="/myBlog/technology/html.html" class="nav-link">
+  HTML
+</a></li><li class="dropdown-item"><!----> <a href="/myBlog/technology/css.html" class="nav-link">
+  CSS
+</a></li><li class="dropdown-item"><!----> <a href="/myBlog/technology/javaScript.html" class="nav-link">
+  JavaScript
+</a></li></ul></div></div><div class="nav-item"><a href="/myBlog/tutorial/" class="nav-link">
+  教程
+</a></div><div class="nav-item"><a href="/myBlog/essay/" class="nav-link">
+  随笔
+</a></div> <!----></nav>  </aside> <main class="page" data-v-934bcd86> <div class="theme-default-content content__default"><h3 id="_1-devserver"><a href="#_1-devserver" class="header-anchor">#</a> 1. devServer</h3> <p>  开发服务器 devServer:用来自动化（自动编译，自动打开浏览器，自动刷新浏览器)</p> <p>特点：只会在内存中编译打包，不会有任何输出，一但终止，会删除，不会留下东西，相当于为webpack提前测试。</p> <p>安装：</p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token function">npm</span> i webpack-dev-serve -D
+</code></pre></div><p>配置：</p> <div class="language-js extra-class"><pre class="language-js"><code>devServer<span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token comment">//构建后的路径</span>
+    contentBase<span class="token operator">:</span> <span class="token function">resolve</span><span class="token punctuation">(</span>__dirname<span class="token punctuation">,</span><span class="token string">'build'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token comment">//启动gzip压缩</span>
+    compress<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    <span class="token comment">//端口号</span>
+    port<span class="token operator">:</span> <span class="token number">3000</span><span class="token punctuation">,</span>
+    <span class="token comment">//自动打开浏览器</span>
+    open<span class="token operator">:</span> <span class="token boolean">true</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>启动服务器：</p> <div class="language-shell extra-class"><pre class="language-shell"><code>npx webpack-dev-server
+</code></pre></div><p>webpack5指令为</p> <div class="language-shell extra-class"><pre class="language-shell"><code>npx webpack server
+</code></pre></div><h3 id="_2-提取css成单独文件"><a href="#_2-提取css成单独文件" class="header-anchor">#</a> 2. 提取css成单独文件</h3> <p>  当文件体积过大时，势必影响加载速度，默认情况下，css文件合并到了js文件中。要将css文件提取出来，可以使用一个插件<code>mini-css-extract-plugin</code>，先下载包，loader和插件分别需要配置。</p> <div class="language-js extra-class"><pre class="language-js"><code>use<span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token comment">//这个loader取代style-loader，作用：提取js中的css成单独文件</span>
+    MiniCssExtractPlugin<span class="token punctuation">.</span>loader<span class="token punctuation">,</span>
+    <span class="token string">'css-loader'</span>
+<span class="token punctuation">]</span>
+</code></pre></div><p>plugins中：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">new</span> <span class="token class-name">MiniCssExtractPlugin</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    <span class="token comment">// 对输出的css重命名</span>
+    filename<span class="token operator">:</span> <span class="token string">'css/built.css'</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+    
+</code></pre></div><h3 id="_3-css兼容性处理"><a href="#_3-css兼容性处理" class="header-anchor">#</a> 3. css兼容性处理</h3> <p>  不同浏览器厂商有些实验性或专属的值，不同版本对css某些属性的支持程度也不同，所以，css兼容性处理非常有必要。
+首先在package.json中配置browserslist。</p> <div class="language-json extra-class"><pre class="language-json"><code><span class="token property">&quot;browserslist&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token property">&quot;development&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+        <span class="token string">&quot;last 1 chrome version&quot;</span><span class="token punctuation">,</span>
+        <span class="token string">&quot;last 1 firefox version&quot;</span><span class="token punctuation">,</span>
+        <span class="token string">&quot;last 1 safari version&quot;</span>
+    <span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;production&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+        <span class="token string">&quot;&gt;0.2%&quot;</span><span class="token punctuation">,</span>
+        <span class="token string">&quot;not dead&quot;</span><span class="token punctuation">,</span>
+        <span class="token string">&quot;not op_mini all&quot;</span>
+    <span class="token punctuation">]</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>这里用到两个包<code>postcss-loader postcss-preset-env</code>，做如下配置：</p> <div class="language-js extra-class"><pre class="language-js"><code>rules<span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token punctuation">{</span>
+        test<span class="token operator">:</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">\.css$</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">,</span>
+        use<span class="token operator">:</span> <span class="token punctuation">[</span>
+
+            MiniCssExtractPlugin<span class="token punctuation">.</span>loader<span class="token punctuation">,</span>
+            <span class="token string">'css-loader'</span><span class="token punctuation">,</span>
+            <span class="token comment">//如果使用默认配置，只需要添加'postcss-loader'</span>
+            <span class="token comment">//'postcss-loader',</span>
+
+            <span class="token comment">//修改loader配置</span>
+            <span class="token punctuation">{</span>
+                loader<span class="token operator">:</span><span class="token string">'postcss-loader'</span>
+            <span class="token punctuation">}</span>
+            <span class="token comment">/*修改loader的配置,需要新建postcss.config.js文件，内容                   
+            module.exports = {
+                plugins: [
+                    require('postcss-preset-env')
+                ]
+            }
+                */</span>
+            
+        <span class="token punctuation">]</span>
+    <span class="token punctuation">}</span>
+
+<span class="token punctuation">]</span>
+</code></pre></div><h3 id="_4-css压缩"><a href="#_4-css压缩" class="header-anchor">#</a> 4. css压缩</h3> <p>下载插件 <code>optimize-css-assets-webpack-plugin</code></p> <p>引入</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">const</span> OptimizeCssAssetsWebpackPlugin <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'optimize-css-assets-webpack-plugin'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><p>plugins中创建</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">new</span> <span class="token class-name">OptimizeCssAssetsWebpackPlugin</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre></div><h3 id="_5-eslint语法检查"><a href="#_5-eslint语法检查" class="header-anchor">#</a> 5. eslint语法检查</h3> <p>  不同开发者都有自己的编程习惯，如果是在多人协作开发中，每个人的代码风格不一致会带来一些阅读上的麻烦。代码遵循一个共同的规范，那么多人协作的时候会轻松许多。eslint正是这样一种帮助规范代码的工具。</p> <p>  下载包： <code>eslint eslint-loader eslint-config-airbnb-base eslint-plugin-import</code>。airbnb风格，是一种比较流行的代码规范，我们使用airbnb风格来规范js代码。</p> <p>packge.json中eslintConfig中设置</p> <div class="language-json extra-class"><pre class="language-json"><code><span class="token property">&quot;eslintConfig&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token property">&quot;extends&quot;</span><span class="token operator">:</span> <span class="token string">&quot;airbnb-base&quot;</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>loader配置：</p> <div class="language-js extra-class"><pre class="language-js"><code>rules<span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token punctuation">{</span>
+        test<span class="token operator">:</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">\.js$</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">,</span>
+        exclude<span class="token operator">:</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">node_modules</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">,</span> <span class="token comment">//只检查自己的代码，不检查第三方库</span>
+        loader<span class="token operator">:</span> <span class="token string">'eslint-loader'</span><span class="token punctuation">,</span>
+        options<span class="token operator">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">]</span>
+</code></pre></div><h3 id="_6-js兼容性处理"><a href="#_6-js兼容性处理" class="header-anchor">#</a> 6. js兼容性处理</h3> <p>  有些浏览器不支持es6语法，需要降级处理。使用到的包 <code>babel-loader @babel/core</code>。如果制作基本的js兼容性处理，可以只使用<code>@babel/preset-env</code>，但是高级语法如promise就不能做兼容性处理了，所以我们还需使用core-js</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token punctuation">{</span>
+    test<span class="token operator">:</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">\.js</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">,</span>
+    exclude<span class="token operator">:</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">node_modules</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">,</span>
+    loader<span class="token operator">:</span> <span class="token string">'babel-loader'</span><span class="token punctuation">,</span>
+    options<span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token comment">//预设：指示babel做怎样的兼容性处理</span>
+        presets<span class="token operator">:</span> <span class="token punctuation">[</span>
+            <span class="token punctuation">[</span>
+            <span class="token string">'@babel/preset-env'</span><span class="token punctuation">,</span>
+            <span class="token punctuation">{</span>
+                <span class="token comment">//按需加载</span>
+                useBuiltIns<span class="token operator">:</span> <span class="token string">'usage'</span><span class="token punctuation">,</span>
+                <span class="token comment">//指定core-js版本</span>
+                corejs<span class="token operator">:</span> <span class="token punctuation">{</span>
+                    version<span class="token operator">:</span> <span class="token number">3</span>
+                <span class="token punctuation">}</span><span class="token punctuation">,</span>
+                targets<span class="token operator">:</span> <span class="token punctuation">{</span>
+                    chrome<span class="token operator">:</span> <span class="token string">'60'</span><span class="token punctuation">,</span>
+                    firefox<span class="token operator">:</span> <span class="token string">'60'</span><span class="token punctuation">,</span>
+                    ie<span class="token operator">:</span> <span class="token string">'9'</span><span class="token punctuation">,</span>
+                    safari<span class="token operator">:</span> <span class="token string">'10'</span><span class="token punctuation">,</span>
+                    edge<span class="token operator">:</span> <span class="token string">'17'</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+            <span class="token punctuation">]</span>
+        <span class="token punctuation">]</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">更新时间:</span> <span class="time">2021-03-12</span></div></footer> <!----> </main></div><div class="global-ui"><!----></div></div>
+    <script src="/myBlog/assets/js/app.b01551eb.js" defer></script><script src="/myBlog/assets/js/3.33770070.js" defer></script><script src="/myBlog/assets/js/1.ef2f72d5.js" defer></script><script src="/myBlog/assets/js/27.fbb666bf.js" defer></script>
+  </body>
+</html>
